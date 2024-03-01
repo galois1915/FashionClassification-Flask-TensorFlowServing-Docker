@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}MNIST fashion{% endblock %}
+
+{% block content %}
+<h1>Classification MNIST fashion</h1>
+<p>We will use neural network to classify clothes using TensorFlow-Serving</p>
+
+<!--<p>{{ status }}</p>-->
+<form method=post action="#" enctype=multipart/form-data>
+  <input type=file name=file>
+  <input type=submit value=Upload>
+</form>
+<br>
+
+<div class="container">
+  <div class="row">
+
+    <!-- Display image uploaded -->
+    <div class="col-sm">
+      {% if path_img %}
+        <img src="{{ url_for('static', filename='images/' + path_img.split('/')[-1]) }}" width="500" height="300"/>
+      {% else %}
+        <img src="{{ url_for('static', filename='images/baldwinIV.jpg') }}" width="500" height="300"/>
+      {% endif %}
+    </div>
+    
+    <!-- Display barplot predcition -->
+    <div class="col-sm">
+        {% if path_prediction %}
+            <img src="{{ url_for('static', filename='images/' + path_prediction.split('/')[-1]) }}" width="500" height="300"/>
+        {% else %}
+            <img src="{{ url_for('static', filename='images/baldwinIV.jpg') }}" width="500" height="300"/>
+        {% endif %}
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
